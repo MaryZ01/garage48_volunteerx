@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using VolunteerX.Data;
 using VolunteerX.Models;
 using VolunteerX.Services;
+using VolunteerX.Extensions;
 
 namespace VolunteerX
 {
@@ -34,9 +35,12 @@ namespace VolunteerX
                 .AddDefaultTokenProviders();
 
             // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();
-
             services.AddMvc();
+
+            services.AddGenericRepostiory();
+
+            services.AddMemoryCache();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +56,8 @@ namespace VolunteerX
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+
+            app.UseSession();
 
             app.UseStaticFiles();
 
