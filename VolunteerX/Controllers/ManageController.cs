@@ -18,19 +18,22 @@ namespace VolunteerX.Controllers
         private readonly IGenericRepository<Project> _projectsRepository;
         private readonly IGenericRepository<SectionOfProject> _sectionsRepository;
         private readonly IGenericRepository<TypeOfProject> _typesRepository;
+        private readonly IGenericRepository<Review> _reviewsRepository;
 
         public ManageController(
             UserManager<ApplicationUser> userManager,
             IGenericRepository<ApplicationUser> usersRepository,
             IGenericRepository<Project> projectsRepository,
             IGenericRepository<SectionOfProject> sectionsRepository,
-            IGenericRepository<TypeOfProject> typesRepository)
+            IGenericRepository<TypeOfProject> typesRepository,
+            IGenericRepository<Review> reviewsRepository)
         {
             _userManager = userManager;
             _usersRepository = usersRepository;
             _projectsRepository = projectsRepository;
             _sectionsRepository = sectionsRepository;
             _typesRepository = typesRepository;
+            _reviewsRepository = reviewsRepository;
         }
 
         [HttpGet]
@@ -50,11 +53,24 @@ namespace VolunteerX.Controllers
         }
 
         [HttpGet]
-        public IActionResult MainVolunteers(string manageProjectId)
+        public IActionResult Groups(string manageProjectId)
         {
             ProjectViewModel model = new ProjectViewModel
             {
-                Project = _projectsRepository.Get(x => x.Id == int.Parse(manageProjectId)).FirstOrDefault()
+                Project = _projectsRepository.Get(x => x.Id == int.Parse(manageProjectId)).FirstOrDefault(),
+                Groups = _projectsRepository.Get(x => x.Id == int.Parse(manageProjectId)).FirstOrDefault().Groups ?? Enumerable.Empty<Group>()
+            };
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Reviews(string manageProjectId)
+        {
+            ProjectViewModel model = new ProjectViewModel
+            {
+                Project = _projectsRepository.Get(x => x.Id == int.Parse(manageProjectId)).FirstOrDefault(),
+                Reviews = _projectsRepository.Get(x => x.Id == int.Parse(manageProjectId)).FirstOrDefault().Reviews ?? Enumerable.Empty<Review>()
             };
 
             return View(model);

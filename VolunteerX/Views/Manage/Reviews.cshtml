@@ -1,0 +1,39 @@
+﻿@model ProjectViewModel
+
+@{
+    ViewData["Title"] = "Панель керування";
+}
+
+<br />
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Manage" asp-action="Index">Основна панель</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Account" asp-action="Option">Налаштування користувача</a>
+    </li>
+</ul>
+<br />
+<div class="row">
+    <div class="col-sm-4">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Groups" asp-controller="Manage" asp-route-manageProjectId="@id">Команди</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Reviews" asp-controller="Manage" asp-route-manageProjectId="@id">Відгуки</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-8">
+        @foreach (Review review in @Model.Reviews)
+        {
+            <br />
+            <p>@review.Text</p>
+            <blockquote class="blockquote">
+                <footer class="blockquote-footer"><small>@review.Date</small></footer>
+            </blockquote>
+            <br />
+        }
+    </div>
+</div>

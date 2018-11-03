@@ -11,8 +11,8 @@ namespace VolunteerX.Models.ProjectViewModel
         public Group Group { get; set; }
         public Message Message { get; set; }
         public Project Project { get; set; }
-        public List<Group> Groups { get; set; }
-        public List<Message> Messages { get; set; }
-        public List<Review> Reviews { get; set; }
+        public IEnumerable<Group> Groups { get; set; }
+        public IEnumerable<Message> Messages { get; set; }
+        public IEnumerable<Review> Reviews { get; set; }
     }
 }
