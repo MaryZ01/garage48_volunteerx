@@ -19,7 +19,8 @@ namespace VolunteerX.Models.Commands
         public override async Task Execute(Telegram.Bot.Types.Message message, TelegramBotClient botClient)
         {
             var chatId = message.Chat.Id;
-            await botClient.SendTextMessageAsync(chatId, "Hallo I'm ASP.NET Core Bot", parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
+            await botClient.SendTextMessageAsync(chatId, "Hello I'm VolunteerX chatbot. Please write your phone number: "
+                , parseMode: Telegram.Bot.Types.Enums.ParseMode.Markdown);
         }
     }
 }
