@@ -1,0 +1,151 @@
+﻿@{
+    ViewData["Title"] = "Основна панель";
+}
+
+<br />
+<div class="row">
+    <div class="col-sm-3">
+        <!-- Add new user -->
+        <!-- Button to Open the Modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addProject">
+            Додати мешканця
+        </button>
+
+        <!-- The Modal -->
+        <div class="modal" id="addProject">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Додати проект</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form asp-controller="Account" asp-action="ProjectRegister" method="post">
+                            <div class="form-group">
+                                <label asp-for="Project.Name">Назва:</label>
+                                <input asp-for="Project.Name" class="form-control" placeholder="Введіть назву">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Project.Describe">Опис:</label>
+                                <input asp-for="Project.Describe" class="form-control" placeholder="Введіть опис">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Project.Date">Дата:</label>
+                                <input asp-for="Project.Date" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Project.TypeOfProject">Тип:</label>
+                                <select asp-for="Porject.TypeOfProject" class="form-control">
+                                    @foreach (TypeOfProject typeOfProject in @Model.TypeOfProjects)
+                                    {
+                                        <option>@typeOfProject.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Project.SectionOfProject">Секція:</label>
+                                <select asp-for="Porject.SectionOfProject" class="form-control">
+                                    @foreach (SectionOfProject sectionOfProject in @Model.SectionOfProjects)
+                                    {
+                                    <option>@sectionOfProject.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Додати</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <!-- Add new apartment -->
+        <!-- Button to Open the Modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addApartment">
+            Додати помешкання
+        </button>
+
+        <!-- The Modal -->
+        <div class="modal" id="addApartment">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Додати помешкання</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form asp-controller="Account" asp-action="ApartmentRegister" method="post">
+                            <div class="form-group">
+                                <label asp-for="Apartment.Address">Адреса помешкання:</label>
+                                <input asp-for="Apartment.Address" class="form-control" placeholder="Введіть адресу помешкання">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Apartment.SizeOfArea">Розмір території:</label>
+                                <input asp-for="Apartment.SizeOfArea" class="form-control" placeholder="Введіть розмір території у кв.м.">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Apartment.Remark">Помітка:</label>
+                                <input asp-for="Apartment.Remark" class="form-control" placeholder="Введіть помітку">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Додати</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+
+        @foreach (ApplicationUser dweller in @Model.Dwellers)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <h1>@dweller.FirstName @dweller.SecondName @dweller.ThirdName</h1>
+                    <small>Електронна пошта: @dweller.Email</small><br />
+                    <small>Мобільний номер: @dweller.PhoneNumber</small><br />
+                    <small>Помітка: @dweller.Remark </small><br />
+                    <small>Ключ авторизації: @dweller.CodeOfVerification</small><br />
+
+                    <blockquote class="blockquote">
+                        <p>Помешкання:</p>
+                        <footer class="blockquote-footer">Україна, м. Львів, вул. Городоцька 213А, кв. 28 (56.4 кв.м.)</footer>
+                    </blockquote>
+
+                    <button id="edit_@dweller.Id" type="button" class="btn btn-link">Редагувати</button>
+                </div>
+            </div>
+            <br />
+        }
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+            <label>Фільтр:</label>
+            <select class="form-control">
+                @foreach (string filter in @Model.Filters)
+                {
+                    <option>@filter</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Організація:</label>
+            <select class="form-control">
+                @foreach (Organization organization in @Model.Organizations)
+                {
+                    <option>@organization.Name</option>
+                }
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Оновити</button>
+    </div>
+</div>

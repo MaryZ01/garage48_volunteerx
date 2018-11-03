@@ -10,6 +10,19 @@ namespace VolunteerX.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Volunteer> Volunteers { get; set; }
+        public DbSet<CriteriaOfVolunteer> CriteriaOfVolunteers { get; set; }
+        public DbSet<Review> Reviews { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<SkillsOfVolunteer> SkillsOfVolunteers { get; set; }
+        public DbSet<Promotion> Promotions { get; set; }
+        public DbSet<TaskOfVolunteer> TaskOfVolunteers { get; set; }
+        public DbSet<TypeOfProject> TypeOfProjects { get; set; }
+        public DbSet<LocationOfProject> LocationOfProjects { get; set; }
+        public DbSet<SectionOfProject> SectionOfProjects { get; set; }
+        public DbSet<Message> Messages { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
