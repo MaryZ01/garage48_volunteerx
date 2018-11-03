@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Основна панель";
+
+    string state = "";
 }
 
 <br />
@@ -36,12 +38,16 @@
                                 <input asp-for="Project.Description" class="form-control" placeholder="Введіть опис">
                             </div>
                             <div class="form-group">
-                                <label asp-for="Project.DateOfProject">Дата:</label>
-                                <input asp-for="Project.DateOfProject" class="form-control">
+                                <label asp-for="Project.DateOfStartProject">Дата початку:</label>
+                                <input asp-for="Project.DateOfStartProject" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="autocomplete">Локація:</label>
-                                <input id="autocomplete" onFocus="geolocate()" class="form-control" placeholder="Введіть локацію">
+                                <label asp-for="Project.DateOfEndProject">Дата закінчення:</label>
+                                <input asp-for="Project.DateOfEndProject" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Project.LocationOfProject">Локація:</label>
+                                <input asp-for="Project.LocationOfProject" class="form-control" placeholder="Введіть локацію">
                             </div>
                             <div class="form-group">
                                 <label asp-for="Project.TypeOfProject">Тип:</label>
@@ -71,15 +77,36 @@
     <div class="col-sm-6">
         @foreach (Project project in @Model.Projects)
         {
+            @switch (project.State)
+            {
+                case StateOfProject.None:
+                    {
+                        state = "в очікуванні";
+                        break;
+                    }
+                case StateOfProject.InProcess:
+                    {
+                        state = "в процесі";
+                        break;
+                    }
+                case StateOfProject.Done:
+                    {
+                        state = "завершенно";
+                        break;
+                    }
+            }
+
             <div class="card">
                 <div class="card-body">
-                    <h1>@project.Name - @project.State</h1>
+                    <h1>
+                        @project.Name - @state
+                    </h1>
                     <small>Опис: @project.Description</small><br />
                     <small>Кількість волонтерів: @project.CountOfVolunteers</small><br />
-                    <small>Максимальна кількість волонтерів: @project.</small><br />
+                    <small>Тип: @project.TypeOfProject</small><br />
+                    <small>Секція: @project.SectionOfProject</small><br />
 
                     <blockquote class="blockquote">
-                        <p>Помешкання:</p>
                         <footer class="blockquote-footer">@project.LocationOfProject</footer>
                     </blockquote>
 
@@ -94,9 +121,9 @@
         <div class="form-group">
             <label>Стан проекту:</label>
             <select class="form-control">
-                @foreach (string state in @Model.FiltersOfState)
+                @foreach (string s in @Model.FiltersOfState)
                 {
-                    <option>@state</option>
+                    <option>@s</option>
                 }
             </select>
         </div>

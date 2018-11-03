@@ -38,7 +38,7 @@ namespace VolunteerX.Controllers
 
             IndexViewModel model = new IndexViewModel
             {
-                Projects = _projectsRepository.Get(x => x.User.Id == user.Id) ?? Enumerable.Empty<Project>(),
+                Projects = _projectsRepository.Get(x => x.UserId == user.Id) ?? Enumerable.Empty<Project>(),
                 SectionsOfProject = _sectionsRepository.Get() ?? Enumerable.Empty<SectionOfProject>(),
                 TypesOfProject = _typesRepository.Get() ?? Enumerable.Empty<TypeOfProject>(),
                 FiltersOfState = new List<string> { "У виконанні", "Завершенно" }

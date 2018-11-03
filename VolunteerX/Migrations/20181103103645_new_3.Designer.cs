@@ -12,9 +12,10 @@ using VolunteerX.Models;
 namespace VolunteerX.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181103103645_new_3")]
+    partial class new_3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -267,8 +268,6 @@ namespace VolunteerX.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ApplicationUserId");
-
                     b.Property<int>("CountOfVolunteers");
 
                     b.Property<int?>("CriteriaOfVolunteerId");
@@ -285,21 +284,25 @@ namespace VolunteerX.Migrations
 
                     b.Property<int?>("PromotionsId");
 
-                    b.Property<string>("SectionOfProject");
+                    b.Property<int?>("SectionOfProjectId");
 
                     b.Property<int>("State");
 
-                    b.Property<string>("TypeOfProject");
+                    b.Property<int?>("TypeOfProjectId");
 
                     b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
-
                     b.HasIndex("CriteriaOfVolunteerId");
 
                     b.HasIndex("PromotionsId");
+
+                    b.HasIndex("SectionOfProjectId");
+
+                    b.HasIndex("TypeOfProjectId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Projects");
                 });
@@ -509,10 +512,6 @@ namespace VolunteerX.Migrations
 
             modelBuilder.Entity("VolunteerX.Models.Project", b =>
                 {
-                    b.HasOne("VolunteerX.Models.ApplicationUser")
-                        .WithMany("Projects")
-                        .HasForeignKey("ApplicationUserId");
-
                     b.HasOne("VolunteerX.Models.CriteriaOfVolunteer", "CriteriaOfVolunteer")
                         .WithMany()
                         .HasForeignKey("CriteriaOfVolunteerId");
@@ -520,6 +519,18 @@ namespace VolunteerX.Migrations
                     b.HasOne("VolunteerX.Models.Promotion", "Promotions")
                         .WithMany()
                         .HasForeignKey("PromotionsId");
+
+                    b.HasOne("VolunteerX.Models.SectionOfProject", "SectionOfProject")
+                        .WithMany()
+                        .HasForeignKey("SectionOfProjectId");
+
+                    b.HasOne("VolunteerX.Models.TypeOfProject", "TypeOfProject")
+                        .WithMany()
+                        .HasForeignKey("TypeOfProjectId");
+
+                    b.HasOne("VolunteerX.Models.ApplicationUser", "User")
+                        .WithMany("Projects")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("VolunteerX.Models.Review", b =>

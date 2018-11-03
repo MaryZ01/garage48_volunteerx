@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using VolunteerX.Models;
 using VolunteerX.Models.AccountViewModels;
+using VolunteerX.Models.ManageViewModel;
+using VolunteerX.Services;
 
 namespace VolunteerX.Controllers
 {
@@ -21,13 +23,16 @@ namespace VolunteerX.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IGenericRepository<Project> _projectsRepository;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            IGenericRepository<Project> projectsRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _projectsRepository = projectsRepository;
         }
 
 
@@ -84,6 +89,33 @@ namespace VolunteerX.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ProjectRegister(IndexViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+
+                Project project = new Project
+                {
+                    Name = model.Project.Name,
+                    Description = model.Project.Description,
+                    State = StateOfProject.None,
+                    DateOfStartProject = model.Project.DateOfStartProject,
+                    DateOfEndProject = model.Project.DateOfEndProject,
+                    TypeOfProject = model.Project.TypeOfProject,
+                    SectionOfProject = model.Project.SectionOfProject,
+                    UserId = user.Id
+                };
+
+                _projectsRepository.Create(project);
+            }
+
+            return RedirectToAction("Index", "Manage");
         }
     }
 }

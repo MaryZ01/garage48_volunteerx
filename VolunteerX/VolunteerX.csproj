@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <UserSecretsId>aspnet-VolunteerX-32D0CBC6-7E0B-4299-9AB9-C023960B7D5A</UserSecretsId>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
 
 

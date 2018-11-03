@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using VolunteerX.Data;
+using VolunteerX.Extensions;
+using VolunteerX.Models;
 
 namespace VolunteerX.Services
 {
