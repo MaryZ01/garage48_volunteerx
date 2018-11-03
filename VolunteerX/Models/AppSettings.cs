@@ -9,8 +9,8 @@ namespace VolunteerX.Models
     {   //bot configuration
         public static string Url { get; set; } = "https://URL:443/{0}";                  //остаточне посилання на опублікований бот
 
-        public static string Name { get; set; } = "<BOT_NAME>";
+        public static string Name { get; set; } = "VolunteerX";
 
-        public static string Key { get; set; } = "<BOT_KEY>";
+        public static string Key { get; set; } = "728827023:AAGBPqiLZJcpU7XD0iyA-uGYnXoFjgplUiw";
     }
 }
