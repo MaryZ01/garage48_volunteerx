@@ -16,7 +16,7 @@
 </ul>
 <br />
 <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-3">
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link" asp-action="Groups" asp-controller="Manage" asp-route-manageProjectId="@id">Команди</a>
@@ -26,7 +26,7 @@
             </li>
         </ul>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-6">
         @foreach (Group group in @Model.Groups)
         {
             <div class="card">
@@ -35,10 +35,11 @@
                         @group.Name
                     </h1>
                     <small>Опис: @group.Description</small><br />
-                    <small>Кількість волонтерів: @group.CountOfVolunteers / @group.MaxOfVolunteers<</small><br />
+                    <small>Кількість волонтерів: @group.CountOfVolunteers / @group.MaxOfVolunteers</small><br />
 
                     <a asp-action="Project" asp-controller="Manage" asp-route-manageProjectId="@id" class="card-link">Керувати волонтерами</a>
                     <a asp-action="Project" asp-controller="Manage" asp-route-manageProjectId="@id" class="card-link">Керувати завданнями</a>
+                    <br />
                     <a asp-action="Project" asp-controller="Manage" asp-route-manageProjectId="@id" class="card-link">Надіслати повідомлення</a>
                     <a asp-action="Project" asp-controller="Manage" asp-route-manageProjectId="@id" class="card-link">Редагувати</a>
                     <a asp-action="Project" asp-controller="Manage" asp-route-manageProjectId="@id" class="card-link">Видалити</a>
@@ -47,5 +48,83 @@
             <br />
             <br />
         }
+    </div>
+    <div class="col-sm-3">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addGroup">
+            Додати команду
+        </button>
+        <div class="modal" id="addGroup">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Cтворити команду</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form asp-controller="Account" asp-action="GroupRegister" method="post">
+                            <div class="form-group">
+                                <label asp-for="@Model.Group.Name">Назва:</label>
+                                <input asp-for="@Model.Group.Name" class="form-control" placeholder="Введіть назву">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.Group.Description">Опис:</label>
+                                <input asp-for="@Model.Group.Description" class="form-control" placeholder="Введіть опис">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="@Model.Group.MaxOfVolunteers">Максимальна кількість волонтерів:</label>
+                                <input asp-for="@Model.Group.MaxOfVolunteers" min="0" value="0" class="form-control">
+                            </div>
+                            <input type="hidden" asp-for="ProjectId" value="@Model.Project.Id">
+                            <button type="submit" class="btn btn-primary">Додати</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addTask">
+            Додати завдання
+        </button>
+        <div class="modal" id="addTask">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Cтворити завдання</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form asp-controller="Account" asp-action="TaskRegister" method="post">
+                            <div class="form-group">
+                                <label asp-for="@Model.Task.Description">Опис:</label>
+                                <input asp-for="@Model.Task.Description" class="form-control" placeholder="Введіть опис">
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Task.GroupId">Команда:</label>
+                                <select asp-for="Task.GroupId" class="form-control">
+                                    @foreach (Group group in @Model.Groups)
+                                    {
+                                        <option value="@group.Id">@group.Name</option>
+                                    }
+                                </select>
+                            </div>
+                            <input type="hidden" asp-for="ProjectId" value="@Model.Project.Id">
+                            <button type="submit" class="btn btn-primary">Додати</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

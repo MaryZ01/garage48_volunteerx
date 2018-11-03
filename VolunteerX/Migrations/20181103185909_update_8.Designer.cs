@@ -12,9 +12,10 @@ using VolunteerX.Models;
 namespace VolunteerX.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181103185909_update_8")]
+    partial class update_8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -369,11 +370,13 @@ namespace VolunteerX.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int>("GroupId");
+                    b.Property<int?>("GroupId");
 
                     b.Property<int>("Type");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
 
                     b.ToTable("TaskOfVolunteers");
                 });
@@ -522,6 +525,13 @@ namespace VolunteerX.Migrations
                     b.HasOne("VolunteerX.Models.Volunteer")
                         .WithMany("Reviews")
                         .HasForeignKey("VolunteerId");
+                });
+
+            modelBuilder.Entity("VolunteerX.Models.TaskOfVolunteer", b =>
+                {
+                    b.HasOne("VolunteerX.Models.Group")
+                        .WithMany("TaskOfVolunteers")
+                        .HasForeignKey("GroupId");
                 });
 
             modelBuilder.Entity("VolunteerX.Models.Volunteer", b =>

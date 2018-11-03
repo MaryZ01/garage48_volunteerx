@@ -15,7 +15,8 @@ namespace VolunteerX.Models
     public class TaskOfVolunteer
     {
         public int Id { get; set; }
-
+        
+        public int GroupId { get; set; }
         public TypeOfTask Type { get; set; }
         public string Description { get; set; }
     }

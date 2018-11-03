@@ -13,8 +13,9 @@ namespace VolunteerX.Models
         public int CountOfVolunteers { get; set; }
         public int MaxOfVolunteers { get; set; }
         public string Description { get; set; }
+        public int ProjectId { get; set; }
         public List<Volunteer> Volunteers { get; set; }
-        public List<TaskOfVolunteer> TaskOfVolunteers { get; set; }
+//        public List<TaskOfVolunteer> TaskOfVolunteers { get; set; }
         public List<Message> Messages { get; set; }
     }
 }

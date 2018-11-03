@@ -1,27 +1,27 @@
-﻿@model RegisterViewModel
+﻿@model OptionViewModel
 
 @{
-    ViewData["Title"] = "Сторінка реєстрації";
+    ViewData["Title"] = "Option";
 }
+
 
 <br />
 <ul class="nav justify-content-center">
     <li class="nav-item">
-        <a class="nav-link" asp-controller="Account" asp-action="Login">Авторизація</a>
+        <a class="nav-link" asp-controller="Manage" asp-action="Index">Основна панель</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" asp-controller="Account" asp-action="Register">Реєстрація</a>
+        <a class="nav-link" asp-controller="Account" asp-action="Option">Налаштування користувача</a>
     </li>
 </ul>
 <br />
-
 <div class="row">
     <div class="col-sm-4">
     </div>
     <div class="col-sm-4">
         <div class="container">
-            <h2 class="text-center">Реєстрація</h2>
-            <form asp-controller="Account" asp-action="Register" method="post">
+            <h2 class="text-center">Налаштування</h2>
+            <form asp-controller="Account" asp-action="Option" method="post">
                 <div class="form-group">
                     <label asp-for="Name">Ім'я:</label>
                     <input asp-for="Name" class="form-control" placeholder="Введіть ім'я">
@@ -39,12 +39,17 @@
                     <input asp-for="PhoneNumber" class="form-control" placeholder="Введіть мобільний номер">
                 </div>
                 <div class="form-group">
-                    <label asp-for="Password">Пароль:</label>
-                    <input asp-for="Password" class="form-control" placeholder="Введіть пароль">
+                    <label asp-for="NewPassword">Актуальний пароль:</label>
+                    <input asp-for="NewPassword" class="form-control" placeholder="Введіть актуальний пароль">
                 </div>
-                <button type="submit" class="btn btn-primary">Зареєструватися</button>
+                <div class="form-group">
+                    <label asp-for="NewPassword">Новий пароль:</label>
+                    <input asp-for="NewPassword" class="form-control" placeholder="Введіть новий пароль">
+                </div>
+                <button type="submit" class="btn btn-primary">Оновити</button>
             </form>
         </div>
+        <br />
     </div>
     <div class="col-sm-4">
     </div>

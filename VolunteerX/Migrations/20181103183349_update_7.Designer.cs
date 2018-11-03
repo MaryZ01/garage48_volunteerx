@@ -12,9 +12,10 @@ using VolunteerX.Models;
 namespace VolunteerX.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181103183349_update_7")]
+    partial class update_7
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -219,9 +220,11 @@ namespace VolunteerX.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<int>("ProjectId");
+                    b.Property<int?>("ProjectId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("Groups");
                 });
@@ -369,11 +372,13 @@ namespace VolunteerX.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<int>("GroupId");
+                    b.Property<int?>("GroupId");
 
                     b.Property<int>("Type");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
 
                     b.ToTable("TaskOfVolunteers");
                 });
@@ -484,6 +489,13 @@ namespace VolunteerX.Migrations
                         .HasForeignKey("SkillsOfVolunteerId");
                 });
 
+            modelBuilder.Entity("VolunteerX.Models.Group", b =>
+                {
+                    b.HasOne("VolunteerX.Models.Project")
+                        .WithMany("Groups")
+                        .HasForeignKey("ProjectId");
+                });
+
             modelBuilder.Entity("VolunteerX.Models.InProject", b =>
                 {
                     b.HasOne("VolunteerX.Models.Volunteer")
@@ -522,6 +534,13 @@ namespace VolunteerX.Migrations
                     b.HasOne("VolunteerX.Models.Volunteer")
                         .WithMany("Reviews")
                         .HasForeignKey("VolunteerId");
+                });
+
+            modelBuilder.Entity("VolunteerX.Models.TaskOfVolunteer", b =>
+                {
+                    b.HasOne("VolunteerX.Models.Group")
+                        .WithMany("TaskOfVolunteers")
+                        .HasForeignKey("GroupId");
                 });
 
             modelBuilder.Entity("VolunteerX.Models.Volunteer", b =>

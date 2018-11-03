@@ -8,6 +8,8 @@ namespace VolunteerX.Models.ProjectViewModel
 {
     public class ProjectViewModel
     {
+        public int ProjectId { get; set; }
+        public TaskOfVolunteer Task { get; set; }
         public Group Group { get; set; }
         public Message Message { get; set; }
         public Project Project { get; set; }

@@ -41,6 +41,8 @@ namespace VolunteerX
 
             services.AddMemoryCache();
             services.AddSession();
+
+            Bot.GetBotClientAsync().Wait();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -19,6 +19,7 @@ namespace VolunteerX.Controllers
         private readonly IGenericRepository<SectionOfProject> _sectionsRepository;
         private readonly IGenericRepository<TypeOfProject> _typesRepository;
         private readonly IGenericRepository<Review> _reviewsRepository;
+        private readonly IGenericRepository<Group> _groupsRepository;
 
         public ManageController(
             UserManager<ApplicationUser> userManager,
@@ -26,7 +27,8 @@ namespace VolunteerX.Controllers
             IGenericRepository<Project> projectsRepository,
             IGenericRepository<SectionOfProject> sectionsRepository,
             IGenericRepository<TypeOfProject> typesRepository,
-            IGenericRepository<Review> reviewsRepository)
+            IGenericRepository<Review> reviewsRepository,
+            IGenericRepository<Group> groupsRepository)
         {
             _userManager = userManager;
             _usersRepository = usersRepository;
@@ -34,6 +36,7 @@ namespace VolunteerX.Controllers
             _sectionsRepository = sectionsRepository;
             _typesRepository = typesRepository;
             _reviewsRepository = reviewsRepository;
+            _groupsRepository = groupsRepository;
         }
 
         [HttpGet]
@@ -58,7 +61,7 @@ namespace VolunteerX.Controllers
             ProjectViewModel model = new ProjectViewModel
             {
                 Project = _projectsRepository.Get(x => x.Id == int.Parse(manageProjectId)).FirstOrDefault(),
-                Groups = _projectsRepository.Get(x => x.Id == int.Parse(manageProjectId)).FirstOrDefault().Groups ?? Enumerable.Empty<Group>()
+                Groups = _groupsRepository.Get(x => x.ProjectId == int.Parse(manageProjectId)) ?? Enumerable.Empty<Group>()
             };
 
             return View(model);
