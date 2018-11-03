@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using VolunteerX.Models;
 using VolunteerX.Models.ManageViewModel;
+using VolunteerX.Models.ProjectViewModel;
 using VolunteerX.Services;
 
 namespace VolunteerX.Controllers
@@ -32,6 +33,7 @@ namespace VolunteerX.Controllers
             _typesRepository = typesRepository;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             ApplicationUser user = await _userManager.GetUserAsync(User);
@@ -42,6 +44,17 @@ namespace VolunteerX.Controllers
                 SectionsOfProject = _sectionsRepository.Get() ?? Enumerable.Empty<SectionOfProject>(),
                 TypesOfProject = _typesRepository.Get() ?? Enumerable.Empty<TypeOfProject>(),
                 FiltersOfState = new List<string> { "У виконанні", "Завершенно" }
+            };
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult MainVolunteers(string manageProjectId)
+        {
+            ProjectViewModel model = new ProjectViewModel
+            {
+                Project = _projectsRepository.Get(x => x.Id == int.Parse(manageProjectId)).FirstOrDefault()
             };
 
             return View(model);

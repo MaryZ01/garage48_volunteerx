@@ -1,0 +1,50 @@
+﻿@model ProjectViewModel
+
+@{
+    ViewData["Title"] = "Панель керування";
+}
+
+<br />
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Manage" asp-action="Index">Основна панель</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Account" asp-action="Option">Налаштування користувача</a>
+    </li>
+</ul>
+<br />
+<div class="row">
+    <div class="col-sm-4">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Project" asp-controller="Manage">Команди</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-action="Project" asp-controller="Manage">Відгуки</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-sm-8">
+        @foreach (Group group in @Model.Groups)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <h1>
+                        @group.Name
+                    </h1>
+                    <small>Опис: @group.Description</small><br />
+                    <small>Кількість волонтерів: @group.CountOfVolunteers / @group.MaxOfVolunteers<</small><br />
+
+                    <a asp-action="Project" asp-controller="Manage" class="card-link">Керувати волонтерами</a>
+                    <a asp-action="Project" asp-controller="Manage" class="card-link">Керувати завданнями</a>
+                    <a asp-action="Project" asp-controller="Manage" class="card-link">Надіслати повідомлення</a>
+                    <a asp-action="Project" asp-controller="Manage" class="card-link">Редагувати</a>
+                    <a asp-action="Project" asp-controller="Manage" class="card-link">Видалити</a>
+                </div>
+            </div>
+            <br />
+            <br />
+        }
+    </div>
+</div>

@@ -1,11 +1,20 @@
 ﻿@model IndexViewModel
 
 @{
-    ViewData["Title"] = "Основна панель";
+    ViewData["Title"] = "Сторінка проектів";
 
     string state = "";
 }
 
+<br />
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Manage" asp-action="Index">Основна панель</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Account" asp-action="Option">Налаштування користувача</a>
+    </li>
+</ul>
 <br />
 <div class="row">
     <div class="col-sm-3">
@@ -102,7 +111,6 @@
                         @project.Name - @state
                     </h1>
                     <small>Опис: @project.Description</small><br />
-                    <small>Кількість волонтерів: @project.CountOfVolunteers</small><br />
                     <small>Тип: @project.TypeOfProject</small><br />
                     <small>Секція: @project.SectionOfProject</small><br />
 
@@ -110,10 +118,12 @@
                         <footer class="blockquote-footer">@project.LocationOfProject</footer>
                     </blockquote>
 
-                    <button id="edit_@project.Id" type="button" class="btn btn-link">Редагувати</button>
-                    <button id="delete_@project.Id" type="button" class="btn btn-link">Видалити</button>
+                    <a asp-action="Project" asp-controller="Manage" asp-route-manageProjectId="@project.Id" class="card-link">Керувати</a>
+                    <a asp-action="Project" asp-controller="Manage" asp-route-manageProjectId="@project.Id" class="card-link">Редагувати</a>
+                    <a asp-action="Project" asp-controller="Manage" asp-route-manageProjectId="@project.Id" class="card-link">Видалити</a>
                 </div>
             </div>
+            <br />
             <br />
         }
     </div>
