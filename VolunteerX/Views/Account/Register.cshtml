@@ -1,0 +1,51 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Сторінка реєстрації";
+}
+
+<br />
+<ul class="nav justify-content-center">
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Account" asp-action="Login">Авторизація</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" asp-controller="Account" asp-action="Register">Реєстрація</a>
+    </li>
+</ul>
+<br />
+
+<div class="row">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+        <div class="container">
+            <h2>Реєстрація</h2>
+            <form asp-controller="Account" asp-action="register" method="post">
+                <div class="form-group">
+                    <label asp-for="Name">Ім'я:</label>
+                    <input asp-for="Name" class="form-control" placeholder="Введіть ім'я">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Surname">Прізвище:</label>
+                    <input asp-for="Surname" class="form-control" placeholder="Введіть прізвище">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email">Електронна пошта:</label>
+                    <input asp-for="Email" class="form-control" placeholder="Введіть електронну пошту">
+                </div>
+                <div class="form-group">
+                    <label asp-for="PhoneNumber">Мобільний номер:</label>
+                    <input asp-for="PhoneNumber" class="form-control" placeholder="Введіть мобільний номер">
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password">Пароль:</label>
+                    <input asp-for="Password" class="form-control" placeholder="Введіть пароль">
+                </div>
+                <button type="submit" class="btn btn-primary">Зареєструватися</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-4">
+    </div>
+</div>

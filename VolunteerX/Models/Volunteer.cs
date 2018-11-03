@@ -28,7 +28,7 @@ namespace VolunteerX.Models
         public string Resume { get; set; }
         public List<Review> Reviews { get; set; }
         public Project CurrentOfProject { get; set; }
-        public List<Project> HistoryOfProjects { get; set; }
+        public List<InProject> HistoryOfProjects { get; set; }
         public string Remark { get; set; }
     }
 }

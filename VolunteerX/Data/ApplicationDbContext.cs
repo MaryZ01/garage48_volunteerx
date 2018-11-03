@@ -19,9 +19,9 @@ namespace VolunteerX.Data
         public DbSet<Promotion> Promotions { get; set; }
         public DbSet<TaskOfVolunteer> TaskOfVolunteers { get; set; }
         public DbSet<TypeOfProject> TypeOfProjects { get; set; }
-        public DbSet<LocationOfProject> LocationOfProjects { get; set; }
         public DbSet<SectionOfProject> SectionOfProjects { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<InProject> InProjects { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)

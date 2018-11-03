@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 namespace VolunteerX.Models
 {
-    public class Promotion
+    public class InProject
     {
         public int Id { get; set; }
 
-        public string Text { get; set; }
+        public string NameOfProject { get; set; }
+        public DateTime Date { get; set; }
     }
 }

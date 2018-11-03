@@ -17,12 +17,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body>
+    @RenderSection("Scripts", required: false)
+
     <div class="container">
         @RenderBody()
     </div>
-
-    <script>
-        @RenderSection("Scripts", required: false)
-    </script>
 </body>
 </html>
