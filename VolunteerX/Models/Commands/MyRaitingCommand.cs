@@ -8,9 +8,9 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace VolunteerX.Models.Commands
 {
-    public class MyProfileCommand : Command
+    public class MyRaitingCommand : Command
     {
-        public override string Name => "My profile";
+        public override string Name => @"Мій рейтинг";
 
         public override bool Contains(Telegram.Bot.Types.Message message)
         {
@@ -25,14 +25,14 @@ namespace VolunteerX.Models.Commands
             var chatId = message.Chat.Id;
 
             ReplyKeyboardMarkup ReplyKeyboard = new[]
-                   {
-                        new[] { "View information" },
-                        new[] { "Customize information", "My events history" },
-                        new[] { "Request menu" }
+                                                   {
+                        new[] { "Мій рейтинг" },
+                        new[] { "Пошук події", "Мої події" },
+                        new[] { "Особистий кабінет" }
                     };
             ReplyKeyboard.ResizeKeyboard = true;
 
-            await bot_client.SendTextMessageAsync(chatId, "Your profile", replyMarkup: ReplyKeyboard, parseMode:
+            await bot_client.SendTextMessageAsync(chatId, "Твій рейнтинг становить 0 балів, допомогай більше і рейтинг буде рости на очах", replyMarkup: ReplyKeyboard, parseMode:
                 Telegram.Bot.Types.Enums.ParseMode.Markdown);
         }
     }

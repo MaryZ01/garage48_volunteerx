@@ -13191,23 +13191,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {},
+    "C:\\Users\\Mike\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\Desktop\\VolunteerXPrj\\garage48_volunteerx\\VolunteerX\\VolunteerX.csproj",
+      "projectUniqueName": "C:\\Users\\Mike\\Documents\\git\\garage48_volunteerx\\VolunteerX\\VolunteerX.csproj",
       "projectName": "VolunteerX",
-      "projectPath": "C:\\Users\\user\\Desktop\\VolunteerXPrj\\garage48_volunteerx\\VolunteerX\\VolunteerX.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user\\Desktop\\VolunteerXPrj\\garage48_volunteerx\\VolunteerX\\obj\\",
+      "projectPath": "C:\\Users\\Mike\\Documents\\git\\garage48_volunteerx\\VolunteerX\\VolunteerX.csproj",
+      "packagesPath": "C:\\Users\\Mike\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Mike\\Documents\\git\\garage48_volunteerx\\VolunteerX\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Mike\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

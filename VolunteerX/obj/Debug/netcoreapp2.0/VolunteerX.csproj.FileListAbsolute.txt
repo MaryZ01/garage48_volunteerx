@@ -9,3 +9,15 @@ C:\Users\user\Desktop\VolunteerXPrj\garage48_volunteerx\VolunteerX\bin\Debug\net
 C:\Users\user\Desktop\VolunteerXPrj\garage48_volunteerx\VolunteerX\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
 C:\Users\user\Desktop\VolunteerXPrj\garage48_volunteerx\VolunteerX\obj\Debug\netcoreapp2.0\VolunteerX.dll
 C:\Users\user\Desktop\VolunteerXPrj\garage48_volunteerx\VolunteerX\obj\Debug\netcoreapp2.0\VolunteerX.pdb
+C:\Users\Mike\Documents\git\garage48_volunteerx\VolunteerX\bin\Debug\netcoreapp2.0\VolunteerX.deps.json
+C:\Users\Mike\Documents\git\garage48_volunteerx\VolunteerX\bin\Debug\netcoreapp2.0\VolunteerX.runtimeconfig.json
+C:\Users\Mike\Documents\git\garage48_volunteerx\VolunteerX\bin\Debug\netcoreapp2.0\VolunteerX.runtimeconfig.dev.json
+C:\Users\Mike\Documents\git\garage48_volunteerx\VolunteerX\bin\Debug\netcoreapp2.0\VolunteerX.dll
+C:\Users\Mike\Documents\git\garage48_volunteerx\VolunteerX\bin\Debug\netcoreapp2.0\VolunteerX.pdb
+C:\Users\Mike\Documents\git\garage48_volunteerx\VolunteerX\obj\Debug\netcoreapp2.0\VolunteerX.csprojAssemblyReference.cache
+C:\Users\Mike\Documents\git\garage48_volunteerx\VolunteerX\obj\Debug\netcoreapp2.0\VolunteerX.csproj.CoreCompileInputs.cache
+C:\Users\Mike\Documents\git\garage48_volunteerx\VolunteerX\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\Mike\Documents\git\garage48_volunteerx\VolunteerX\obj\Debug\netcoreapp2.0\VolunteerX.AssemblyInfoInputs.cache
+C:\Users\Mike\Documents\git\garage48_volunteerx\VolunteerX\obj\Debug\netcoreapp2.0\VolunteerX.AssemblyInfo.cs
+C:\Users\Mike\Documents\git\garage48_volunteerx\VolunteerX\obj\Debug\netcoreapp2.0\VolunteerX.dll
+C:\Users\Mike\Documents\git\garage48_volunteerx\VolunteerX\obj\Debug\netcoreapp2.0\VolunteerX.pdb

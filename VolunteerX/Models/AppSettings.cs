@@ -7,7 +7,7 @@ namespace VolunteerX.Models
 {
     public static class AppSettings
     {   //bot configuration
-        public static string Url { get; set; } = "https://URL:443/{0}";                  //остаточне посилання на опублікований бот
+        public static string Url { get; set; } = "https://www.insurgency.xyz:443/{0}";              //остаточне посилання на опублікований бот
 
         public static string Name { get; set; } = "VolunteerX";
 

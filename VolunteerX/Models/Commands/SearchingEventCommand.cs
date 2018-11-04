@@ -8,9 +8,9 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace VolunteerX.Models.Commands
 {
-    public class MainMenuCommand : Command
+    public class SearchingEventCommand : Command
     {
-        public override string Name => "Основне меню";
+        public override string Name => "Пошук події";
 
         public override bool Contains(Telegram.Bot.Types.Message message)
         {
@@ -32,7 +32,7 @@ namespace VolunteerX.Models.Commands
                     };
             ReplyKeyboard.ResizeKeyboard = true;
 
-            await bot_client.SendTextMessageAsync(chatId, "Основне меню", replyMarkup: ReplyKeyboard, parseMode:
+            await bot_client.SendTextMessageAsync(chatId, "Вибач, поки немає активних подій, але ми щось придумаємо", replyMarkup: ReplyKeyboard, parseMode:
                 Telegram.Bot.Types.Enums.ParseMode.Markdown);
         }
     }

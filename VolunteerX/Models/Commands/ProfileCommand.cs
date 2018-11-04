@@ -8,9 +8,9 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace VolunteerX.Models.Commands
 {
-    public class MainMenuCommand : Command
+    public class ProfileCommand : Command
     {
-        public override string Name => "Основне меню";
+        public override string Name => "Особистий кабінет";
 
         public override bool Contains(Telegram.Bot.Types.Message message)
         {
@@ -26,13 +26,14 @@ namespace VolunteerX.Models.Commands
 
             ReplyKeyboardMarkup ReplyKeyboard = new[]
                                                    {
-                        new[] { "Мій рейтинг" },
-                        new[] { "Пошук події", "Мої події" },
-                        new[] { "Особистий кабінет" }
+                        new[] { "Особиста інформація", "Історія подій" },
+                        new[] { "Статус заявок" },
+                        new[] { "Надати інформацію про себе" },
+                        new[] { "Основне меню" }
                     };
             ReplyKeyboard.ResizeKeyboard = true;
 
-            await bot_client.SendTextMessageAsync(chatId, "Основне меню", replyMarkup: ReplyKeyboard, parseMode:
+            await bot_client.SendTextMessageAsync(chatId, "Особистий кабінет", replyMarkup: ReplyKeyboard, parseMode:
                 Telegram.Bot.Types.Enums.ParseMode.Markdown);
         }
     }

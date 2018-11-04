@@ -8,9 +8,9 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace VolunteerX.Models.Commands
 {
-    public class MainMenuCommand : Command
+    public class MyTasksCommand : Command
     {
-        public override string Name => "Основне меню";
+        public override string Name => "Мої завдання";
 
         public override bool Contains(Telegram.Bot.Types.Message message)
         {
@@ -22,17 +22,19 @@ namespace VolunteerX.Models.Commands
 
         public override async Task Execute(Telegram.Bot.Types.Message message, TelegramBotClient bot_client)
         {
+            //TODO: REALISE EVENTS HISTORY
             var chatId = message.Chat.Id;
 
             ReplyKeyboardMarkup ReplyKeyboard = new[]
                                                    {
-                        new[] { "Мій рейтинг" },
-                        new[] { "Пошук події", "Мої події" },
-                        new[] { "Особистий кабінет" }
+                        new[] { "Мої завдання" },
+                        new[] { "Контакти", "Залишити відгук" },
+                        new[] { "Інформація про команду", "Інформація про подію" },
+                        new[] { "Основне меню" }
                     };
             ReplyKeyboard.ResizeKeyboard = true;
 
-            await bot_client.SendTextMessageAsync(chatId, "Основне меню", replyMarkup: ReplyKeyboard, parseMode:
+            await bot_client.SendTextMessageAsync(chatId, "Твої завдання (не актуальні): 1. порахувати кількість бейджів", replyMarkup: ReplyKeyboard, parseMode:
                 Telegram.Bot.Types.Enums.ParseMode.Markdown);
         }
     }

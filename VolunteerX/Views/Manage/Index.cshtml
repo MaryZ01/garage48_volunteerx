@@ -112,10 +112,12 @@
                     </h1>
                     <small>Опис: @project.Description</small><br />
                     <small>Тип: @project.TypeOfProject</small><br />
+                    <small>Початок: @project.DateOfStartProject</small><br />
+                    <small>ЗАвершення: @project.DateOfEndProject</small><br />
                     <small>Секція: @project.SectionOfProject</small><br />
 
                     <blockquote class="blockquote">
-                        <footer class="blockquote-footer">@project.LocationOfProject</footer>
+                        <footer class="blockquote-footer">м. Львів, вул. Університетська 1</footer>
                     </blockquote>
 
                     <a asp-action="Groups" asp-controller="Manage" asp-route-manageProjectId="@project.Id" class="card-link">Керувати</a>

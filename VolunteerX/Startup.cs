@@ -71,8 +71,6 @@ namespace VolunteerX
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
-
-            Bot.GetBotClientAsync().Wait();
         }
     }
 }
